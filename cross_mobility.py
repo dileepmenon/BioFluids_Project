@@ -23,18 +23,22 @@ def mu_RP(a, eta, r, mod_r, unit_r):
     return const*(m+n)
 
 
-def cross_mob_bead(a, eta, z_i, z_j, x_vec_i, x_vec_j):
+def cross_mob_bead(a, eta, x_vec_i, x_vec_j):
     """Calculates and returns the cross mobility matrix of a bead i with
     respect to bead j
 
         Args:
             a       : bead radius in m
             eta     : water viscosity in kg/m3
-            z_i     : z-cordinate of bead i in m
-            z_j     : z-cordinate of bead j in m
             x_vec_i : column vector of x, y, z of bead i
             x_vec_j : column vector of x, y, z of bead j
     """
+    # z-cordinate of bead i in m
+    z_i = x_vec_i[2, 0]
+
+    # z-cordinate of bead j in m
+    z_j = x_vec_j[2, 0]
+
     # Conjugate of vector x_vec_j is such that only z-cord will be negative
     x_vec_jconj = x_vec_j.copy()
     x_vec_jconj[2, 0] = -1*x_vec_j[2, 0]
