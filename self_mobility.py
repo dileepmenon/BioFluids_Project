@@ -2,11 +2,11 @@ import numpy as np
 
 
 def self_mob(a, eta, z):
-    """Calculates and returns the self mobility matrix for a bead
+    """Calculates and returns the self mobility matrix for a bead.
 
         Args:
-            a   : bead radius in micrometer
-            eta : water viscosity in kg/m3
+            a   : Bead radius in m
+            eta : Water viscosity in kg/m3
             z   : z-cordinate of bead in m
     """
     const = 1.0/(6*np.pi*eta*a)
