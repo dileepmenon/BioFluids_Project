@@ -346,9 +346,8 @@ def contact_force(F_g, list_r_ji, list_unit_rji, mob_list, list_Fb):
     return list_F_contact
 
 
-
 def total_force(bead_r, eta, rho_bead, rho_water, alpha, tilt_angle,
-                semi_cone_angle, omega, t, mag_sus, r_list):
+                semi_cone_angle, omega, t, mag_sus, r_list, mob_list):
     """
     Computes the total force (gravity+magnetic+contact+constraint) acting on
     each bead.
@@ -366,6 +365,7 @@ def total_force(bead_r, eta, rho_bead, rho_water, alpha, tilt_angle,
         mag_sus           : Magnetic susceptibility of beads
         r_list            : List of all position vectors of beads in column
                             form
+        mob_list          : List containing mobilites of each bead
 
     Returns:
         list_total_force  : List containing the total force acting on each
@@ -390,8 +390,6 @@ def total_force(bead_r, eta, rho_bead, rho_water, alpha, tilt_angle,
     # List containing total magnetic force acting on each bead
     list_Fb = magnetic_force(list_r_ji, list_mod_r_ji, m_vec_list)
 
-    # List containing mobilites of each bead as list
-    mob_list = bead_moblity(bead_r, eta, r_list)
 
     # List containing contact force between neighbouring beads
     list_F_contact = contact_force(F_g, list_r_ji, list_unit_rji,
